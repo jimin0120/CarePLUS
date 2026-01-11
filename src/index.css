@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg-light text-text-dark font-sans;
+    background: linear-gradient(to bottom, #ffffff, #fafafa);
+    min-height: 100vh;
+  }
+  
+  * {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  }
+}
+
+@layer utilities {
+  .hover-smooth {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
