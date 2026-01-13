@@ -1,10 +1,15 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import EntryPage from './pages/EntryPage'
-import SymptomSurvey from './pages/SymptomSurvey'
 import MainPage from './pages/MainPage'
+import MainPageId from './pages/MainPageId'
+import MainPageVn from './pages/MainPageVn'
+import MainPageJp from './pages/MainPageJp'
+import CommunicationLounge from './pages/CommunicationLounge'
 import DiseaseBoard from './pages/DiseaseBoard'
 import PostDetail from './pages/PostDetail'
+import CaregivingJournal from './pages/CaregivingJournal'
+import HealingContent from './pages/HealingContent'
 
 // Protected Route Component - checks if user has seen intro
 function ProtectedRoute({ children }) {
@@ -77,7 +82,9 @@ function App() {
             path="/"
             element={
               hasSeenIntro ? (
-                <Navigate to="/home" replace />
+                <ProtectedRoute>
+                  <MainPage />
+                </ProtectedRoute>
               ) : (
                 <EntryPage 
                   onSeenIntro={() => {
@@ -88,12 +95,43 @@ function App() {
               )
             }
           />
-          <Route path="/survey" element={<SymptomSurvey />} />
-          <Route 
-            path="/home" 
+          <Route
+            path="/home"
             element={
               <ProtectedRoute>
                 <MainPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/id/home"
+            element={
+              <ProtectedRoute>
+                <MainPageId />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/vn/home"
+            element={
+              <ProtectedRoute>
+                <MainPageVn />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/jp/home"
+            element={
+              <ProtectedRoute>
+                <MainPageJp />
+              </ProtectedRoute>
+            }
+          />
+          <Route 
+            path="/communication-lounge" 
+            element={
+              <ProtectedRoute>
+                <CommunicationLounge />
               </ProtectedRoute>
             } 
           />
@@ -119,6 +157,22 @@ function App() {
             element={
               <ProtectedRoute>
                 <DiseaseBoard />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/caregiving-journal" 
+            element={
+              <ProtectedRoute>
+                <CaregivingJournal />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/healing-content" 
+            element={
+              <ProtectedRoute>
+                <HealingContent />
               </ProtectedRoute>
             } 
           />
